@@ -129,6 +129,7 @@ public class ImageController {
     String tags = convertTagsToString(image.getTags());
     model.addAttribute("image", image);
     model.addAttribute("tags", tags);
+
     return "images/edit";
   }
 
@@ -181,6 +182,7 @@ public class ImageController {
     String error = "Only the owner of the image can delete the image";
     model.addAttribute("image", image);
     model.addAttribute("editError", error);
+//    model.addAttribute("tags", image.getTags());
     model.addAttribute("comments", image.getComments());
     return "images/image";
   }
