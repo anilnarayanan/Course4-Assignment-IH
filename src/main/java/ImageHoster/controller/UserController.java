@@ -55,7 +55,8 @@ public class UserController {
   }
 
   /**
-   * This method checks Password strength provided on user registration Requirement: Password must
+   * This method checks Password strength provided on user registration
+   * Requirement: Password must
    * contain at least 1 alphabet (a-z or A-Z) Password must contain at least 1 number (0-9) Password
    * must contain at least 1 special character (any character other than a-z, A-Z and 0-9)
    *

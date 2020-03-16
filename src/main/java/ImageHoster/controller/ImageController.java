@@ -56,6 +56,8 @@ public class ImageController {
   }
 
   /**
+   * Show image by imageId
+   *
    * @param imageId The auto generated ID
    * @param model
    * @return
