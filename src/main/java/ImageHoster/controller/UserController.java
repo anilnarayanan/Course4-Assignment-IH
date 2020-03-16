@@ -42,16 +42,23 @@ public class UserController {
   public String registerUser(User user, Model model) {
     if (passwordStrength(user)) {
       userService.registerUser(user);
-      return "redirect:/users/login";
+      return "users/login";
+    } else {
+      String error = "Password must contain atleast 1 alphabet, 1 number & 1 special character";
+      user = new User();
+      UserProfile profile = new UserProfile();
+      user.setProfile(profile);
+      model.addAttribute("User", user);
+      model.addAttribute("passwordTypeError", error);
+      return "users/registration";
     }
-    String error = "Password must contain atleast 1 alphabet, 1 number & 1 special character";
-    model.addAttribute("User", user);
-    model.addAttribute("passwordTypeError", error);
-    //        return "users/registration";
-    return "users/login";
   }
 
   /**
+   * This method checks Password strength provided on user registration Requirement: Password must
+   * contain at least 1 alphabet (a-z or A-Z) Password must contain at least 1 number (0-9) Password
+   * must contain at least 1 special character (any character other than a-z, A-Z and 0-9)
+   *
    * @param user
    * @return
    */
@@ -59,19 +66,14 @@ public class UserController {
     int passwordStrengthScore = 0;
     String password = user.getPassword();
 
-    if (password.matches("(?=.*[0-9]).*")) {
+    if (password.matches("(?=.*[a-zA-Z0-9]).*")) {
       ++passwordStrengthScore;
     }
-    if (password.matches("(?=.*[a-z]).*")) {
-      ++passwordStrengthScore;
-    }
-    if (password.matches("(?=.*[A-Z]).*")) {
-      ++passwordStrengthScore;
-    }
+
     if (password.matches("(?=.*[~!@#$%^&*()_-]).*")) {
       ++passwordStrengthScore;
     }
-    return passwordStrengthScore == 4;
+    return passwordStrengthScore == 2;
   }
 
   // This controller method is called when the request pattern is of type 'users/login'

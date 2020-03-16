@@ -20,14 +20,14 @@ public class Comment {
   @Column(name = "createdDate")
   private LocalDate createdDate;
 
-  //    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
-  // CascadeType.REFRESH}, fetch = FetchType.EAGER)
+//  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+//   CascadeType.REFRESH}, fetch = FetchType.EAGER)
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "user_id")
   private User user;
 
-  //    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
-  // CascadeType.REFRESH}, fetch = FetchType.EAGER)
+//  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+//   CascadeType.REFRESH}, fetch = FetchType.EAGER)
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "image_id")
   private Image image;
